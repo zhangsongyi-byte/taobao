@@ -240,6 +240,13 @@ input{
     color: red !important;
 }
 
+.dn{
+    display: flex !important;
+}
+
+.db{
+    background-color: rgba(64,75,97,0.9) !important;
+}
 
 /* .content1{
     width: 100%;
