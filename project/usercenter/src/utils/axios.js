@@ -8,7 +8,7 @@ var api = axios.create({
 
 // request拦截器
 api.interceptors.request.use(config => {
-    const userinfo = JSON.parse(localStorage.getItem("userInfo")) || {};
+    const userinfo = JSON.parse(localStorage.getItem("userInfo")) || "";
     if (userinfo) {
         config.headers[ "user" ] = userinfo._id;
     }

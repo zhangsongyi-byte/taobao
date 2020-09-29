@@ -30,24 +30,25 @@ export default {
     methods:{
         /* 退出到登录页面，如果用push，那么下一次还能回退到当前页面 */
         confirmQuit() {
-        this.$confirm('是否退出', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-            }).then(() => {
-                localStorage.removeItem('userid');
-                this.$router.replace({
-                name:"Login"
-            })
-            this.$message({
-                type: 'success',
-                message:'退出成功！'
-            });
-            }).catch(() => {
-            this.$message({
-                type: 'info',
-            });          
-            });
+            this.$confirm('是否退出', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+                }).then(() => {
+                    this.$message({
+                    type: 'success',
+                    message:'退出成功！'
+                });
+                    localStorage.removeItem("userInfo");
+                    this.$router.replace({
+                    name:"Login"
+                })
+                
+                }).catch(() => {
+                this.$message({
+                    type: 'info',
+                });          
+                });
         }
     },
 }

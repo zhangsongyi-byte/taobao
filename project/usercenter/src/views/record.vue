@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="item in list" :key="item._id" class="record-list">
+        <div v-for="(item,index) in list" :key="index" class="record-list">
             <div>{{item.name}}</div>
             <div style="color:#999">{{item.exchangeDate | globalFormatTime}}</div>
         </div>

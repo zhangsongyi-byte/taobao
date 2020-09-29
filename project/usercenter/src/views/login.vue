@@ -65,10 +65,6 @@ export default {
       const data = await this.yPost("/user/login", this.loginForm);
       if (data) {
         const userList=data.user
-        this.$router.push({
-          name: "HomePage"
-        });
-        
         /* 性别转换 */
         if(userList.gender===0){
           userList.gender='女'
@@ -77,7 +73,11 @@ export default {
         }
         console.log(userList)
         /* 接收从接口中获取的用户信息 */
-        this.updateInfo(userList)
+        this.updateInfo(userList);
+        /* 登录跳转的时候要把push放到最后，要先把值存储进去，在第一次登陆的时候就拿到这个值，第二次登陆的时候才不会出错 */
+        this.$router.push({
+          path:'/homepage'
+        });
       }
     }
   }

@@ -5,8 +5,8 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path:"/",
-    redirect:"/login"
+    path:'/',
+    redirect:'/login'
   },
   {
     path: "/regist",
@@ -61,19 +61,19 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to,from,next)=>{
-//   if(!(to.name=="Login"||to.name=="Regist")){
-//     const isLogin=JSON.parse(localStorage.getItem("userInfo"))||"";
-//     if(!isLogin){
-//       next({
-//         name:"Login"
-//       });
-//     }else{
-//       next();
-//     }
-//   }else{
-//     next();
-//   }  
-// })
+router.beforeEach((to,from,next)=>{
+  if(!(to.name=="Login"||to.name=="Regist")){
+    const isLogin=JSON.parse(localStorage.getItem("userInfo"))||"";
+    if(!isLogin){
+      next({
+        name:"Login"
+      });
+    }else{
+      next();
+    }
+  }else{
+    next();
+  }  
+})
 
 export default router;
