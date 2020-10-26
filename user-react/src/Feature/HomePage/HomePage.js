@@ -1,7 +1,7 @@
 
-import React,{ useEffect } from 'react';
+import React,{ useEffect,useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { loadUser } from './state/homepage-action';
 
 /* router */
@@ -13,6 +13,9 @@ import Mall from '../Mall/Mall';
 import UserInfo from '../UserInfo/UserInfo';
 
 export default function HomePage () {
+
+  let [ path,setPath ] = useState('/homepage/center');
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -31,10 +34,10 @@ export default function HomePage () {
           <img src={ user.avatar } className='home-icon'></img>
           {user.username}
           <ul>
-            <li>
+            <li className={ path === '/homepage/usercenter' ? 'bgColor' : '' } onClick={ ()=>{setPath('/homepage/usercenter');} }>
               <Link to='/homepage/usercenter'>个人中心</Link>
             </li>
-            <li>
+            <li className={ path === '/homepage/mall' ? 'bgColor' : '' } onClick={ ()=>{setPath('/homepage/mall');} }>
               <Link to='/homepage/mall'>积分商城</Link>
             </li>
           </ul>
@@ -46,6 +49,9 @@ export default function HomePage () {
           </Route>
           <Route path='/homepage/mall'>
             <Mall></Mall>
+          </Route>
+          <Route path='/homepage'>
+            <Redirect to='/homepage/usercenter'></Redirect>
           </Route>
         </Switch>
       </div>

@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadShop } from './state/mall-action';
@@ -8,6 +8,7 @@ import _ from 'lodash';
 import mallImg from '../../Assets/img5.png';
 
 export default function Mall () {
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -35,6 +36,7 @@ export default function Mall () {
             </div>
             <button className="exchange-btn" onClick={ ()=>{
               dispatch(loadMall(item._id));
+              alert('兑换成功！');
             } }>兑换</button>
           </div>
         </div>
